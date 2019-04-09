@@ -3,8 +3,8 @@ node{
   git 'https://github.com/binaygit/simple-java-maven-app/'
 }
 stage('Compile Package'){
-  def mvnHome = tool name: 'maven-3', type: 'maven'
-  def mvnCMD = "${mvnHome}/bin/mvn"
-  sh "${mvnCMD} package"
+  def mvnHome = tool name: 'maven3', type: 'maven'
+   /* def mvnCMD = "${mvnHome}/bin/mvn" */
+  sh "${mvnHome}/bin/mvn package"
   }
 }
