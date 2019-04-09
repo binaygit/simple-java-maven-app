@@ -1,10 +1,17 @@
 node{
+  env.JAVA_HOME = tool name: 'java', type: 'jdk'
+  def mvnHome = tool name: 'maven3', type: 'maven'
+  def mvnCMD = "${mvnHome}/bin/mvn"
   stage('SCM Checkout'){
   git 'https://github.com/binaygit/simple-java-maven-app/'
-}
-stage('Compile Package'){
-  def mvnHome = tool name: 'maven3', type: 'maven'
+   }
+  stage('Compile'){
+    echo "Compiling the Source code"
+    sh "${mvnCMD} compile"
+  }
+stage('Package'){
    /* def mvnCMD = "${mvnHome}/bin/mvn" */
-  sh "${mvnHome}/bin/mvn package"
+  echo "Package the source code"
+  sh "${mvnCMD} package"
   }
 }
